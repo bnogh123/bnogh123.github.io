@@ -9,15 +9,22 @@
 }
 
 :root {
-    /* Neon Color Palette */
-    --neon-orange: #FF6B35;
-    --neon-green: #00FF88;
-    --neon-pink: #FF10F0;
-    --dark-bg: #0a0a0a;
-    --darker-bg: #050505;
-    --card-bg: #1a1a1a;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
+    /* Vaporwave Color Palette */
+    --neon-purple: #9d4edd;
+    --neon-cyan: #00e5ff;
+    --neon-blue: #5b7fff;
+    --neon-gold: #ffd700;
+    --washed-purple: #b39ddb;
+    --dark-bg: #0a0a14;
+    --darker-bg: #050508;
+    --card-bg: #1a1a28;
+    --text-primary: #e0e0f0;
+    --text-secondary: #a0a0b0;
+
+    /* Legacy color names for backward compatibility */
+    --neon-orange: var(--neon-purple);
+    --neon-green: var(--neon-cyan);
+    --neon-pink: var(--neon-blue);
 
     /* Typography */
     --font-mono: 'VT323', monospace;
@@ -127,12 +134,13 @@ body {
 /* ==================== */
 
 .section {
+    position: relative;
+    z-index: 10;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 6rem 2rem;
-    position: relative;
 }
 
 .container {
@@ -667,6 +675,137 @@ body {
 .contact-value {
     color: var(--text-primary);
     font-size: 1rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-card:hover::before {
+    left: 100%;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+    border-color: var(--neon-orange);
+}
+
+.contact-card.email-card {
+    border-color: var(--neon-orange);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+
+.contact-card.email-card:hover {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+    border-color: var(--neon-green);
+}
+
+.contact-icon {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--neon-orange);
+    text-shadow: 0 0 15px var(--neon-orange);
+    transition: all 0.3s ease;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--neon-orange);
+    border-radius: 50%;
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.contact-card:hover .contact-icon {
+    transform: rotate(360deg) scale(1.1);
+    text-shadow: 0 0 25px var(--neon-orange), 0 0 40px var(--neon-orange);
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
+}
+
+.linkedin-card .contact-icon {
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-green);
+    border-color: var(--neon-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.linkedin-card:hover .contact-icon {
+    text-shadow: 0 0 25px var(--neon-green), 0 0 40px var(--neon-green);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+}
+
+.github-card .contact-icon {
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-green);
+    border-color: var(--neon-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.github-card:hover .contact-icon {
+    text-shadow: 0 0 25px var(--neon-green), 0 0 40px var(--neon-green);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+}
+
+.contact-card h3 {
+    font-family: var(--font-mono);
+    color: var(--neon-orange);
+    font-size: 1.5rem;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover h3 {
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-green);
+}
+
+.contact-link {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    word-break: break-all;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.contact-card:hover .contact-link {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.contact-card a.contact-link:hover {
+    text-decoration: underline;
 }
 
 .resume-download {
